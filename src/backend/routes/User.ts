@@ -12,7 +12,16 @@ UserRoute.route('/user')
         });
     })
     .post(Authenticator.isAuthenticated, (req, res, next) => {
-        res.send('post user route');
+        let params = req.body;
+
+        if (params.id) {
+            UserModel.editUser(params.id, {
+                firstname: params.firstname,
+                phone: params.phone
+            }).then((result) => {
+                res.send(result);
+            });
+        }
     });
 
 export default UserRoute;

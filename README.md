@@ -33,4 +33,13 @@ http://127.0.0.1:3333/api/user
 > "username": name,
 
 
+# Edit user data
+http://127.0.0.1:3333/api/user
 
+(auth)
+
+> "id": number (required),
+
+> "phone": string,
+
+> "firstname": string
