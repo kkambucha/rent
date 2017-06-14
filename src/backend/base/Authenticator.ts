@@ -28,7 +28,7 @@ class Authenticator {
             });
         });
 
-        Passport.deserializeUser((userIdAndRoleId: UserIdAndRoleId, done) => {
+        Passport.deserializeUser((userIdAndRoleId: string, done) => {
             if (userIdAndRoleId) {
                 this.UserModel.getUserByName(userIdAndRoleId).then((result) => {
                     if (result) {

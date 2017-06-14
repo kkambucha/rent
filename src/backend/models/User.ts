@@ -1,7 +1,6 @@
 import * as Sequelize from 'sequelize';
 import Database from '../base/Database';
 import * as Bcrypt from 'bcrypt';
-import {UserIdAndRoleId} from '../interfaces/UserIdAndRoleId';
 
 export default class User {
 
@@ -68,7 +67,7 @@ export default class User {
         });
     };
 
-    public getUserByName (username: UserIdAndRoleId) {
+    public getUserByName (username: string) {
         return this.user.find({
             where: {
                 username: username
@@ -84,7 +83,7 @@ export default class User {
         });
     }
 
-    public createUser (username: string, password: string, type: number, callback,) {
+    public createUser (username: string, password: string, type: number, callback: Function) {
         if (!username || !password || !type) {
             console.log('Error userdata');
         } else {
@@ -100,7 +99,7 @@ export default class User {
         }
     }
 
-    public editUser (id, params) {
+    public editUser (id: number, params) {
         let query = [];
 
         if (params.firstname) {

@@ -9,7 +9,7 @@ RegistrationRoute.route('/')
         if (req.isAuthenticated()) {
             res.redirect('/');
         } else {
-            if (req.body.username && req.body.password) {
+            if (req.body.username&& req.body.password) {
                 UserModel.getUserByName(req.body.username).then((result) => {
                     if (!result) {
                         UserModel.createUser(req.body.username, req.body.password, req.body.type, (result) => {
