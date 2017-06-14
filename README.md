@@ -9,6 +9,14 @@ install node-typings - 'node_modules/.bin/typings install dt~node --global --sav
 # Api methods
 
 
+# Registration
+http://localhost:3333/api/registration/
+
+body - username, password, type (0 or 1)
+
+headers - Content-Type = application/x-www-form-urlencoded
+
+
 # Login
 http://127.0.0.1:3333/login
 

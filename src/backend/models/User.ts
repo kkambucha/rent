@@ -1,6 +1,7 @@
 import * as Sequelize from 'sequelize';
 import Database from '../base/Database';
 import * as Bcrypt from 'bcrypt';
+import {UserIdAndRoleId} from '../interfaces/UserIdAndRoleId';
 
 export default class User {
 
@@ -67,7 +68,7 @@ export default class User {
         });
     };
 
-    public getUserByName (username) {
+    public getUserByName (username: UserIdAndRoleId) {
         return this.user.find({
             where: {
                 username: username
@@ -75,15 +76,24 @@ export default class User {
         });
     };
 
-    public createUser (username: string, password: string, callback) {
-        if (!username || !password) {
+    public getUserById (id: number) {
+        return this.user.find({
+            where: {
+                id: id
+            }
+        });
+    }
+
+    public createUser (username: string, password: string, type: number, callback,) {
+        if (!username || !password || !type) {
             console.log('Error userdata');
         } else {
             Bcrypt.genSalt(10, (err, salt) => {
                 Bcrypt.hash(password, salt, (err, hash) => {
                     this.user.create({
                         username: username,
-                        password: hash
+                        password: hash,
+                        type: type
                     }).then(callback);
                 });
             });

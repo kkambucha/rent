@@ -24,4 +24,11 @@ UserRoute.route('/user')
         }
     });
 
+UserRoute.route('/user/:id')
+    .get(Authenticator.isAuthenticated, (req, res, next) => {
+        UserModel.getUserById(req.params.id).then((result) => {
+            res.send(result);
+        });
+    });
+
 export default UserRoute;

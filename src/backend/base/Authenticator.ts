@@ -5,11 +5,7 @@ import * as Passport from 'passport';
 import {Strategy} from 'passport-local';
 import User from '../models/User';
 import * as Bcrypt from 'bcrypt';
-
-interface UserIdAndRoleId {
-    username: string;
-    password: string;
-}
+import {UserIdAndRoleId} from '../interfaces/UserIdAndRoleId';
 
 class Authenticator {
 

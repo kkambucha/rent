@@ -12,8 +12,9 @@ RegistrationRoute.route('/')
             if (req.body.username && req.body.password) {
                 UserModel.getUserByName(req.body.username).then((result) => {
                     if (!result) {
-                        UserModel.createUser(req.body.username, req.body.password, (result) => {
-                            res.redirect('/login');
+                        UserModel.createUser(req.body.username, req.body.password, req.body.type, (result) => {
+                            // res.redirect('/login');
+                            res.send('Success creation user');
                         });
                     } else {
                         res.send('Error user is exist');
